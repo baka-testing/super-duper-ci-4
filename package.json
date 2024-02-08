@@ -1,12 +1,51 @@
 {
-  "name": "super-duper-ci-4",
+  "name": "@baka-testing/super-duper-ci-4",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/baka-testing/super-duper-ci-4.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
+  },
+  "description": "Super Duper CI",
+  "source": "src/components/custom-button.js",
+  "main": "dist/custom-button.js",
+  "module": "dist/custom-button.es.js",
+  "types": "dist/custom-button.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "parcel build",
+    "dev": "parcel -p 6969 *.html",
+    "eslint": "eslint --ext .js src",
+    "test": "jest",
+    "release:ci": "semantic-release"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "amtins",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@parcel/packager-ts": "^2.8.3",
+    "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-typescript-types": "^2.8.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
+    "@semantic-release/npm": "^10.0.2",
+    "babel-jest": "^29.5.0",
+    "buffer": "^5.7.1",
+    "eslint": "^8.37.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "parcel": "^2.8.3",
+    "semantic-release": "^21.0.0"
+  },
+  "dependencies": {
+    "video.js": "^8.5.0"
+  }
 }

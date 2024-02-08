@@ -1,0 +1,51 @@
+name: Publish dist tag
+on:
+  push:
+    branches:
+      - main
+jobs:
+  pre-release-tag:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      packages: write
+      issues: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        env :
+          CI: true
+        run: |
+          npm pkg delete scripts.prepare
+          npm ci
+
+      - name: Run build
+        run: |
+          npm run build
+
+      - name: Publish distribution tag main 📦
+        if: success()
+        run: npm run release:ci
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Distribution tag publish failed 🫣
+        if: failure()
+        run: |
+          echo "It seems something didn't go as planned 🤔"
+          exit 1
