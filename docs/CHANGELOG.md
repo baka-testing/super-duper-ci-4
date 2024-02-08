@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/baka-testing/super-duper-ci-4/compare/v1.1.0...v1.2.0) (2024-02-08)
+
+
+### 🚀 New Features
+
+* add feature 3 ([25dd544](https://github.com/baka-testing/super-duper-ci-4/commit/25dd544a9be58592e3bdeba42b3ad5ebcc4ed727))
+
 ## [1.1.0](https://github.com/baka-testing/super-duper-ci-4/compare/v1.0.0...v1.1.0) (2024-02-08)
 
 
